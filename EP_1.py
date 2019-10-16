@@ -5,12 +5,10 @@ print("\n    Bem Vindo ao BlackJack!\n")
 print("-"*30+"\n")
 i=int(input('\033[1;32;40mquantos baralhos vc \033[1;33;40mquer usar?'))
 print("-"*30+"\n")
-
-
-
 soma=0
 while dinheiro>0:
-    lista=[1,2,3,4,5,6,7,8,9,10,10,10,10,1,2,3,4,5,6,7,8,9,10,10,10,10,1,2,3,4,5,6,7,8,9,10,10,10,10,1,2,3,4,5,6,7,8,9,10,10,10,10]
+    lista=[1,2,3,4,5,6,7,8,9,10,10,10,10]
+    lista=lista*4
     lista=lista*i
     print('seu dinheiro:',dinheiro)
     texto = input('qual a sua aposta?')
@@ -35,6 +33,9 @@ while dinheiro>0:
        
         print('sua primeira carta é:',lista[carta1])
         print('sua segunda carta é:',lista[carta2])
+        
+        #feature de split
+        
         if lista[carta1]==lista[carta2]:
             split=input('quer splitar as suas cartas?')
             if split=='sim':
@@ -70,7 +71,7 @@ while dinheiro>0:
                             soma2+=10
                             if soma2 > 21:
                                 soma2-=10
-                        if lista[carta2]==1 and soma>21:
+                        if lista[carta2]==1 and soma2>21:
                             soma2-=10
                             
                         print('voce esta com:',soma2,'no segundo bolo')
@@ -98,49 +99,79 @@ while dinheiro>0:
                                 soma3-=10
                     print('a nova carta da banca é:',lista[carta11])
                     print('agora a banca esta com:',soma3)
+                
+                
+                if lista[carta9] == 1 and lista[carta10]==10 or lista[carta9]==10 and lista[carta10]==1:
+                    print()
+                    print('a banca tem um blackjack!')
+                    print()
+                    dinheiro-=aposta
                     
                       
-                if soma > 21 and soma2 > 21:
+                elif soma > 21 and soma2 > 21:
                     dinheiro-=aposta
                     print()
                     print('voce passou do limite nos dois bolos')
                     print()
                     
                     
-                    
                 elif soma3>21:
                     dinheiro+=aposta
                     print()
-                    print('a banca estorou?')
+                    print('a banca estorou')
                     print()
+                elif soma<=21 and soma2<=21:
                     
-                elif soma >  soma3 and soma2 > soma3:
-                    dinheiro+=aposta
-                    print()
-                    print('vc ganho da banca nos dois bolos')
-                    print()
-                    
-                elif soma >  soma3 and soma2 < soma3:
-                    dinheiro+=aposta
-                    print()
-                    print('vc ganho da banca no primeiro bolo')
-                    print()
-                    
-                elif soma <  soma3 and soma2 > soma3:
-                    dinheiro+=aposta
-                    print()
-                    print('vc ganho da banca no segundo bolos')
-                    print()
-                    
-                elif soma < soma3 and soma2 <soma3:
-                    dinheiro-=aposta
-                    print()
-                    print('vc perdeu nos dois bolos')
-                    print()
-                else:
-                    print()
-                    print('voce empatou com a banca')
-                    print()
+                    if soma >  soma3 and soma2 > soma3:
+                        dinheiro+=aposta
+                        print()
+                        print('vc ganho da banca nos dois bolos')
+                        print()
+                        
+                    elif soma >  soma3 and soma2 < soma3:
+                        dinheiro+=aposta
+                        print()
+                        print('vc ganho da banca no primeiro bolo')
+                        print()
+                        
+                    elif soma <  soma3 and soma2 > soma3:
+                        dinheiro+=aposta
+                        print()
+                        print('vc ganho da banca no segundo bolo')
+                        print()
+                        
+                    elif soma < soma3 and soma2 <soma3:
+                        dinheiro-=aposta
+                        print()
+                        print('vc perdeu nos dois bolos')
+                        print()
+                    else:
+                        print()
+                        print('voce empatou com a banca')
+                        print()
+                        
+                elif soma<=21 and soma2>21:
+                    if soma>soma3:
+                        dinheiro+=aposta
+                        print()
+                        print('voce ganhou apenas no primeiro bolo')
+                        print()
+                    elif soma<soma3:
+                        dinheiro-=aposta
+                        print()
+                        print('voce perdeu no primeiro bolo e estorou no segundo bolo')
+                        print()
+                elif soma>21 and soma2<=21:
+                    if soma2>soma3:
+                        dinheiro+=aposta
+                        print()
+                        print('voce ganhou apenas no segundo bolo')
+                        print()
+                    elif soma2<soma3:
+                        dinheiro-=aposta
+                        print()
+                        print('voce estorou no primeiro bolo e perdeu no segundo bolo')
+                        print()
                     
             
                 
@@ -199,13 +230,20 @@ while dinheiro>0:
                 print('agora a banca esta com:',soma2)
             
                 
+            if lista[carta4] == 1 and lista[carta5]==10 or lista[carta4]==10 and lista[carta5]==1:
+                print()
+                print('a banca tem um blackjack!')
+                print()
+                dinheiro-=aposta
                 
-            if lista[carta1] == 1 and lista[carta2]==10 or lista[carta1]==10 and lista[carta2]==1:
+                
+            elif lista[carta1] == 1 and lista[carta2]==10 or lista[carta1]==10 and lista[carta2]==1:
                 print()
                 print('vc tem um blackjack!')
                 print()
                 dinheiro+=1.5*aposta
                 
+           
                 
             elif soma > 21:
                 dinheiro-=aposta
