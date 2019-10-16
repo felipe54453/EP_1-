@@ -1,6 +1,13 @@
 import random 
 dinheiro=100
-i=int(input('quantos baralhos vc quer usar?'))
+print()
+print("\n    Bem Vindo ao BlackJack!\n")
+print("-"*30+"\n")
+i=int(input('\033[1;32;40mquantos baralhos vc \033[1;33;40mquer usar?'))
+print("-"*30+"\n")
+
+
+
 soma=0
 while dinheiro>0:
     lista=[1,2,3,4,5,6,7,8,9,10,10,10,10,1,2,3,4,5,6,7,8,9,10,10,10,10,1,2,3,4,5,6,7,8,9,10,10,10,10,1,2,3,4,5,6,7,8,9,10,10,10,10]
@@ -240,6 +247,3 @@ while dinheiro>0:
             print('voce quebrou!')
             print()
             break
-                
-                
-            
